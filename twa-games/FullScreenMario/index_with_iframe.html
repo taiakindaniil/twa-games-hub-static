@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+  <!-- Good for vertical, bad for horizontal on mobile -->
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="default.css" rel="stylesheet">
+  <link href="Fonts/stylesheet.css" rel="stylesheet">
+
+  <script src="ui.js"></script>
+
+  <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script>
+</head>
+
+<body onload="start()">
+  <!-- <div id="wrap"> -->
+    <!-- <div id="content"> -->
+      
+      <!-- Game itself -->
+      <iframe onload="this.contentWindow.focus()" id="game" style="margin-top: 0; height: 100%;" src="mobilemario.html"></iframe>
+
+      <!-- After the game (retracts as needed) -->
+      <!-- <div id="after"> -->
+      
+        <!-- Level Editor popup -->
+        <!-- <div id="out_editor" class="bar1"> -->
+          <!-- <div class="label">- Level Editor -</div> -->
+          <!-- <div id="in_editor" class="expander"></div> -->
+        <!-- </div> -->
+        
+        <!-- Map Selector popup -->
+        <!-- <div id="out_mapselect" class="bar1"> -->
+          <!-- <div class="label">- Map Select -</div> -->
+          <!-- <div id="in_mapselect" class="expander"></div> -->
+        <!-- </div> -->
+        
+        <!-- Options popup -->
+        <!-- <div id="out_options" class="bar1"> -->
+          <!-- <div class="label">- Options -</div> -->
+          <!-- <div id="in_options" class="expander"></div> -->
+        <!-- </div> -->
+        
+        <!-- Key Mapping popup -->
+        <!-- <div id="out_keymapping" class="bar1"> -->
+          <!-- <div class="label">- Keys Mapping -</div> -->
+          <!-- <div id="in_keymapping" class="expander"></div> -->
+        <!-- </div> -->
+        
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+  <!-- <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script> -->
+  <script>
+      var is_mobile = false;
+      window.onload = () => {
+          console.log(document.getElementById('game').contentWindow.is_mobile);
+          try {
+              var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
+              var lp = retrieveLaunchParams();
+  
+              is_mobile = lp.platform == 'android' || lp.platform == 'ios';
+              
+              postEvent('web_app_expand');
+          } catch {
+              console.log('You are not in the Telegram app.');
+          }
+  
+          // FullScreenMario();
+      };
+  </script>
+</body>
+
+</html>
