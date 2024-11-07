@@ -144,10 +144,11 @@
 <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script>
 <script>
     var is_mobile = true;
+    var lp;
     window.onload = () => {
         try {
             var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
-            var lp = retrieveLaunchParams();
+            lp = retrieveLaunchParams();
 
             is_mobile = lp.platform == 'android' || lp.platform == 'ios';
             
@@ -174,7 +175,7 @@
                 },
                 body: JSON.stringify(
                     {
-                        _auth: retrieveLaunchParams,
+                        _auth: lp,
                         game_id: 0,
                     }
                 ),
