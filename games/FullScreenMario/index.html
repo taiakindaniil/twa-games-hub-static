@@ -158,11 +158,27 @@
 
         FullScreenMario();
 
+        // connecting datao object tracker after loading mario game
         window.data = new DataObjectTracker(window.data, (change) => {
+            console.log("CHANGE:", change);
             console.log(`Property ${change.property} changed from ${change.oldValue} to ${change.newValue}`);
             if (change.parent.label) {
                 console.log(`In DataObject with label: ${change.parent.label}`);
             }
+
+            fetch('https://3a8b-94-25-229-237.ngrok-free.app/api/update_game_progress', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(
+                    {
+                        _auth: retrieveLaunchParams,
+                        game_id: 0,
+                    }
+                ),
+            });
+
         });
 
     };
