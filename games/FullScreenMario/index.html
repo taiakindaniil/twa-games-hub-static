@@ -159,27 +159,49 @@
 
         FullScreenMario();
 
+        // get save data and extract 
+        var saveData = {
+            map: "1-1",
+            playerpower: 1,
+            coins: 0,
+            lives: 3,
+            score: 0
+        }
+
         // connecting datao object tracker after loading mario game
         window.data = new DataObjectTracker(window.data, async (change) => {
-            console.log("CHANGE:", change);
-            console.log(`Property ${change.property} changed from ${change.oldValue} to ${change.newValue}`);
-            if (change.parent.name) {
-                console.log(`In DataObject with label: ${change.parent.name}`);
+            const objName = change.parent.name.toLowerCase();
+
+            if (objName == "time") { return; }
+
+            // handle playerpower separately because the name contains in property field
+            if (change.property == "playerpower") {
+                saveData["playerpower"] = change.newValue;
+            } else {
+                saveData[objName] = change.newValue;
+            }
+            
+            // in this case we send data to server
+            if (objName == "map") {
+                console.log("Sending saveData to server:", saveData);
+
+                await fetch("https://3a8b-94-25-229-237.ngrok-free.app/api/update_game_progress", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(
+                        {
+                            _auth: lp.initDataRaw,
+                            game_id: 0,
+                            save_data: JSON.stringify(saveData)
+                        }
+                    ),
+                });
             }
 
-            await fetch('https://3a8b-94-25-229-237.ngrok-free.app/api/update_game_progress', {
-                method: 'POST',
-                mode: 'cors',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(
-                    {
-                        _auth: lp.initDataRaw,
-                        game_id: 0,
-                    }
-                ),
-            });
+            // console.log("CHANGE:", change);
+            // console.log(`Property ${change.property} changed from ${change.oldValue} to ${change.newValue}`);
 
         });
 
