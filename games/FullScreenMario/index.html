@@ -145,7 +145,7 @@
 <script>
     var is_mobile = true;
     var lp;
-    window.onload = () => {
+    window.onload = async () => {
         try {
             var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
             lp = retrieveLaunchParams();
@@ -166,7 +166,7 @@
             coins: 0,
             lives: 3,
             score: 0
-        }
+        };
 
         // connecting datao object tracker after loading mario game
         window.data = new DataObjectTracker(window.data, async (change) => {
@@ -208,6 +208,27 @@
             // console.log("CHANGE:", change);
             // console.log(`Property ${change.property} changed from ${change.oldValue} to ${change.newValue}`);
 
+        });
+
+        await fetch("https://3a8b-94-25-229-237.ngrok-free.app/api/game_progress", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(
+                {
+                    _auth: lp.initDataRaw,
+                    game_id: 1
+                }
+            )
+        }).then((response) => {
+            return response.json();
+        }).then(data => {
+            console.log(data); // Use the data from the response
+
+            window.data.score = data.score;
+            window.data.coins = data.coins;
+            window.data.lives = data.lives;
+            window.data.world = data.world;
         });
 
     };
