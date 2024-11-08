@@ -169,20 +169,7 @@
 
         saveData = await getGameProgress(1, lp.initDataRaw);
         FullScreenMario(); // todo: save data
-
-        window.data.score.amount = saveData["score"];
-        updateDataElement(window.data.score);
-        
-        window.data.coins.amount = saveData["coins"];
-        updateDataElement(window.data.coins);
-        
-        window.data.lives.amount = saveData["lives"];
-        updateDataElement(window.data.lives);
-
-        const world = saveData["world"].split('-');
-        setTimeout(() => {
-            setMap(world[0], world[1]);
-        }, 500);
+        loadSaveData(saveData);
 
         // connecting data object tracker after loading mario game
         window.data = new DataObjectTracker(window.data, async (change) => {
@@ -202,6 +189,9 @@
             // in this case we send data to server
             if (objName == "world") {
                 console.log("Sending saveData to server:", saveData);
+                if (saveData.lives == 0) {
+                    saveData.lives = 3;
+                }
                 await setGameProgress(1, saveData.score, saveData, lp.initDataRaw);
             }
 
@@ -210,6 +200,27 @@
 
         });
     };
+
+    function loadSaveData(saveData) {
+        window.data.score.amount = saveData["score"];
+        updateDataElement(window.data.score);
+        
+        window.data.coins.amount = saveData["coins"];
+        updateDataElement(window.data.coins);
+        
+        window.data.lives.amount = saveData["lives"];
+        updateDataElement(window.data.lives);
+
+        if (saveData["playerpower"] >= 2) {
+            playerGetsBig(window.player, true);
+            if(saveData["playerpower"] == 3) playerGetsFire(window.player, true);
+        }
+
+        const world = saveData["world"].split('-');
+        setTimeout(() => {
+            setMap(world[0], world[1]);
+        }, 500);
+    }
 </script>
 </html>
 
