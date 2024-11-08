@@ -16,7 +16,7 @@ const result_screen = document.querySelector('#result-screen');
 // ----------
 const cells = document.querySelectorAll('.main-grid-cell');
 
-const name_input = document.querySelector('#input-name');
+// const name_input = document.querySelector('#input-name');
 
 const number_inputs = document.querySelectorAll('.number');
 
@@ -296,8 +296,8 @@ const startGame = () => {
     start_screen.classList.remove('active');
     game_screen.classList.add('active');
 
-    player_name.innerHTML = name_input.value.trim();
-    setPlayerName(name_input.value.trim());
+    // player_name.innerHTML = name_input.value.trim();
+    // setPlayerName(name_input.value.trim());
 
     game_level.innerHTML = CONSTANT.LEVEL_NAME[level_index];
 
@@ -329,29 +329,29 @@ document.querySelector('#btn-level').addEventListener('click', (e) => {
 });
 
 document.querySelector('#btn-play').addEventListener('click', () => {
-    if (name_input.value.trim().length > 0) {
+    // if (name_input.value.trim().length > 0) {
         initSudoku();
         startGame();
-    } else {
-        name_input.classList.add('input-err');
-        setTimeout(() => {
-            name_input.classList.remove('input-err');
-            name_input.focus();
-        }, 500);
-    }
+    // } else {
+    //     name_input.classList.add('input-err');
+    //     setTimeout(() => {
+    //         name_input.classList.remove('input-err');
+    //         name_input.focus();
+    //     }, 500);
+    // }
 });
 
 document.querySelector('#btn-continue').addEventListener('click', () => {
-    if (name_input.value.trim().length > 0) {
+    // if (name_input.value.trim().length > 0) {
         loadSudoku();
         startGame();
-    } else {
-        name_input.classList.add('input-err');
-        setTimeout(() => {
-            name_input.classList.remove('input-err');
-            name_input.focus();
-        }, 500);
-    }
+    // } else {
+    //     name_input.classList.add('input-err');
+    //     setTimeout(() => {
+    //         name_input.classList.remove('input-err');
+    //         name_input.focus();
+    //     }, 500);
+    // }
 });
 
 document.querySelector('#btn-pause').addEventListener('click', () => {
@@ -399,11 +399,11 @@ const init = () => {
     initCellsEvent();
     initNumberInputEvent();
 
-    if (getPlayerName()) {
-        name_input.value = getPlayerName();
-    } else {
-        name_input.focus();
-    }
+    // if (getPlayerName()) {
+        // name_input.value = getPlayerName();
+    // } else {
+        // name_input.focus();
+    // }
 }
 
 init();
