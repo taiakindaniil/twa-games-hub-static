@@ -212,13 +212,15 @@
         updateDataElement(window.data.lives);
 
         const world = saveData["world"].split('-');
+
+        if (saveData["playerpower"] >= 2) {
+            player.power = saveData["playerpower"];
+            playerGetsBig(window.player, true);
+            if(saveData["playerpower"] == 3) playerGetsFire(window.player, true);
+         }
+
         setTimeout(() => {
             setMap(world[0], world[1]);
-            
-            if (saveData["playerpower"] >= 2) {
-                playerGetsBig(window.player, true);
-                if(saveData["playerpower"] == 3) playerGetsFire(window.player, true);
-            }
         }, 500);
     }
 </script>
