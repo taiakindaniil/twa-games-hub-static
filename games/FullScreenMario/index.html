@@ -180,7 +180,9 @@
         updateDataElement(window.data.lives);
 
         const world = saveData["world"].split('-');
-        setMap(world[0], world[1]);
+        setTimeout(() => {
+            setMap(world[0], world[1]);
+        }, 500);
 
         // connecting data object tracker after loading mario game
         window.data = new DataObjectTracker(window.data, async (change) => {
