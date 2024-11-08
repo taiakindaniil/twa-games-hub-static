@@ -211,14 +211,6 @@
 
         });
 
-        window.data.score.amount = 1000000;
-        updateDataElement(window.data.score);
-
-        window.data.coins.amount = 1000000;
-        updateDataElement(window.data.coins);
-        window.data.world.amount = "1-2";
-        updateDataElement(window.data.world);
-
         await fetch(`https://3a8b-94-25-229-237.ngrok-free.app/api/game_progress?game_id=${1}`, {
             method: "GET",
             headers: {
