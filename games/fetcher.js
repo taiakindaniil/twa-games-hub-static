@@ -1,21 +1,26 @@
 async function getGameProgress(gameId, tmaInitDataRaw) {
-    return await fetch(`https://3a8b-94-25-229-237.ngrok-free.app/api/game_progress?game_id=${gameId}`, {
-        method: "GET",
-        headers: {
-            "Authorization": `tma ${tmaInitDataRaw}`,
-            "Content-Type": "application/json",
-            "ngrok-skip-browser-warning": "69420"
-        }
-    }).then(response => {
+    try {
+        const response = await fetch(`https://3a8b-94-25-229-237.ngrok-free.app/api/game_progress?game_id=${gameId}`, {
+            method: "GET",
+            headers: {
+                "Authorization": `tma ${tmaInitDataRaw}`,
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "69420"
+            }
+        });
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = response.json();
-        return data["save_data"];
-    }).catch(err => {
-        console.log(err);
+
+        const data = await response.json();
+
+        // Return save_data if it exists, otherwise return null
+        return data?.save_data || null;
+    } catch (err) {
+        console.error("Error fetching game progress:", err);
         return null;
-    });
+    }
 }
 
 
