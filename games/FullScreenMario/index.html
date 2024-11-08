@@ -189,14 +189,14 @@
             if (objName == "world") {
                 console.log("Sending saveData to server:", saveData);
 
-                await fetch("https://3a8b-94-25-229-237.ngrok-free.app/api/update_game_progress", {
+                await fetch("https://3a8b-94-25-229-237.ngrok-free.app/api/game_progress", {
                     method: "POST",
                     headers: {
+                        "Authorization": `tma ${lp.initDataRaw}`,
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify(
                         {
-                            _auth: lp.initDataRaw,
                             game_id: 1,
                             score: saveData.score,
                             save_data: JSON.stringify(saveData)
@@ -210,17 +210,12 @@
 
         });
 
-        await fetch("https://3a8b-94-25-229-237.ngrok-free.app/api/game_progress", {
+        await fetch(`https://3a8b-94-25-229-237.ngrok-free.app/api/game_progress?game_id=${1}`, {
             method: "GET",
             headers: {
+                "Authorization": `tma ${lp.initDataRaw}`,
                 "Content-Type": "application/json",
-            },
-            body: JSON.stringify(
-                {
-                    _auth: lp.initDataRaw,
-                    game_id: 1
-                }
-            )
+            }
         }).then((response) => {
             return response.json();
         }).then(data => {
