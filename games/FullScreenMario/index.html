@@ -218,23 +218,23 @@
                 "Content-Type": "application/json",
                 "ngrok-skip-browser-warning": "69420"
             }
-        }).then(async (response) => {
+        }).then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            return await response.json();
+            return response.json();
         }).then(data => {
             console.log(data); // Use the data from the response
             
-            world = data.world.split('-');
+            world = data.save_data.world.split('-');
 
             setMap(world[0], world[1]);
 
-            window.data.score.amount = data.score;
-            updateDataElement(window.data.score);
-            window.data.coins.amount = data.coins;
+            window.data.score.amount = data.save_data.score;
+            updateDataElement(window.data.save_data.score);
+            window.data.coins.amount = data.save_data.coins;
             updateDataElement(window.data.coins);
-            window.data.lives.amount = data.lives;
+            window.data.lives.amount = data.save_data.lives;
             updateDataElement(window.data.lives);
 
             // window.data.world.amount = data.world;
