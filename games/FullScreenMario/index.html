@@ -226,15 +226,16 @@
         }).then(data => {
             console.log(data); // Use the data from the response
             
-            world = data.save_data.world.split('-');
-
+            const world = data["save_data"]["world"].split('-');
             setMap(world[0], world[1]);
 
-            window.data.score.amount = data.save_data.score;
-            updateDataElement(window.data.save_data.score);
-            window.data.coins.amount = data.save_data.coins;
+            window.data.score.amount = data["save_data"]["score"];
+            updateDataElement(window.data.score);
+            
+            window.data.coins.amount = data["save_data"]["coins"];
             updateDataElement(window.data.coins);
-            window.data.lives.amount = data.save_data.lives;
+            
+            window.data.lives.amount = data["save_data"]["lives"];
             updateDataElement(window.data.lives);
 
             // window.data.world.amount = data.world;
