@@ -180,7 +180,9 @@
             if (change.property == "playerpower") {
                 saveData["playerpower"] = change.newValue;
             } else {
-                saveData[objName] = change.newValue;
+                if (objName !== undefined) {
+                    saveData[objName] = change.newValue;
+                }
             }
             
             // in this case we send data to server
