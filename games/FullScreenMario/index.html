@@ -222,7 +222,6 @@
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            console.log(await response.text());
             return await response.json();
         }).then(data => {
             console.log(data); // Use the data from the response
