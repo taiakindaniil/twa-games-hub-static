@@ -211,6 +211,14 @@
 
         });
 
+        window.data.score.amount = 1000000;
+        updateDataElement(window.data.score);
+
+        window.data.coins.amount = 1000000;
+        updateDataElement(window.data.coins);
+        window.data.world.amount = "1-2";
+        updateDataElement(window.data.world);
+
         await fetch(`https://3a8b-94-25-229-237.ngrok-free.app/api/game_progress?game_id=${1}`, {
             method: "GET",
             headers: {
@@ -225,11 +233,20 @@
             return await response.json();
         }).then(data => {
             console.log(data); // Use the data from the response
+            
+            world = data.world.split('-');
 
-            window.data.score = data.score;
-            window.data.coins = data.coins;
-            window.data.lives = data.lives;
-            window.data.world = data.world;
+            setMap(world[0], world[1]);
+
+            window.data.score.amount = data.score;
+            updateDataElement(window.data.score);
+            window.data.coins.amount = data.coins;
+            updateDataElement(window.data.coins);
+            window.data.lives.amount = data.lives;
+            updateDataElement(window.data.lives);
+
+            // window.data.world.amount = data.world;
+            // updateDataElement(window.data.world);
         }).catch(err => {
             console.log("ERRORROOR:", err);
         });
