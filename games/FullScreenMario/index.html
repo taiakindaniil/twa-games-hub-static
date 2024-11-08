@@ -168,7 +168,7 @@
             score: 0
         };
 
-        // connecting datao object tracker after loading mario game
+        // connecting data object tracker after loading mario game
         window.data = new DataObjectTracker(window.data, async (change) => {
             const objName = change.parent?.name?.toLowerCase();
             
@@ -194,6 +194,7 @@
                     headers: {
                         "Authorization": `tma ${lp.initDataRaw}`,
                         "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "69420"
                     },
                     body: JSON.stringify(
                         {
@@ -215,9 +216,14 @@
             headers: {
                 "Authorization": `tma ${lp.initDataRaw}`,
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "69420"
             }
-        }).then((response) => {
-            return response.json();
+        }).then(async (response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            console.log(await response.text());
+            return await response.json();
         }).then(data => {
             console.log(data); // Use the data from the response
 
@@ -225,6 +231,8 @@
             window.data.coins = data.coins;
             window.data.lives = data.lives;
             window.data.world = data.world;
+        }).catch(err => {
+            console.log("ERRORROOR:", err);
         });
 
     };
