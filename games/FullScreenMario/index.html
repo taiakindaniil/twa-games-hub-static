@@ -161,7 +161,7 @@
 
         // get save data and extract 
         var saveData = {
-            map: "1-1",
+            world: "1-1",
             playerpower: 1,
             coins: 0,
             lives: 3,
@@ -182,7 +182,7 @@
             }
             
             // in this case we send data to server
-            if (objName == "map") {
+            if (objName == "world") {
                 console.log("Sending saveData to server:", saveData);
 
                 await fetch("https://3a8b-94-25-229-237.ngrok-free.app/api/update_game_progress", {
