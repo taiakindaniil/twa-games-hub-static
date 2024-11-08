@@ -32,6 +32,7 @@
     <script src="src/QuadsKeepr/QuadsKeepr.js?v=3.0"></script>
 
     <script src="../tracker.js"></script>
+    <script src="../fetcher.js"></script>
 
     <style>
         #paused {
@@ -145,6 +146,15 @@
 <script>
     var is_mobile = true;
     var lp;
+    // get save data and extract 
+    var saveData = {
+        world: "1-1",
+        playerpower: 1,
+        coins: 0,
+        lives: 3,
+        score: 0
+    };
+
     window.onload = async () => {
         try {
             var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
@@ -157,24 +167,26 @@
             console.log('You are not in the Telegram app.');
         }
 
-        FullScreenMario();
+        saveData = await getGameProgress(1, lp.initDataRaw);
+        FullScreenMario(); // todo: save data
 
-        // get save data and extract 
-        var saveData = {
-            world: "1-1",
-            playerpower: 1,
-            coins: 0,
-            lives: 3,
-            score: 0
-        };
+        window.data.score.amount = saveData["score"];
+        updateDataElement(window.data.score);
+        
+        window.data.coins.amount = saveData["coins"];
+        updateDataElement(window.data.coins);
+        
+        window.data.lives.amount = saveData["lives"];
+        updateDataElement(window.data.lives);
+
+        const world = saveData["world"].split('-');
+        setMap(world[0], world[1]);
 
         // connecting data object tracker after loading mario game
         window.data = new DataObjectTracker(window.data, async (change) => {
             const objName = change.parent?.name?.toLowerCase();
             
             if (objName == "time") { return; }
-
-            console.log("objName:", objName);
 
             // handle playerpower separately because the name contains in property field
             if (change.property == "playerpower") {
@@ -188,62 +200,13 @@
             // in this case we send data to server
             if (objName == "world") {
                 console.log("Sending saveData to server:", saveData);
-
-                await fetch("https://3a8b-94-25-229-237.ngrok-free.app/api/game_progress", {
-                    method: "POST",
-                    headers: {
-                        "Authorization": `tma ${lp.initDataRaw}`,
-                        "Content-Type": "application/json",
-                        "ngrok-skip-browser-warning": "69420"
-                    },
-                    body: JSON.stringify(
-                        {
-                            game_id: 1,
-                            score: saveData.score,
-                            save_data: JSON.stringify(saveData)
-                        }
-                    ),
-                });
+                await setGameProgress(1, saveData.score, saveData, lp.initDataRaw);
             }
 
             // console.log("CHANGE:", change);
             // console.log(`Property ${change.property} changed from ${change.oldValue} to ${change.newValue}`);
 
         });
-
-        await fetch(`https://3a8b-94-25-229-237.ngrok-free.app/api/game_progress?game_id=${1}`, {
-            method: "GET",
-            headers: {
-                "Authorization": `tma ${lp.initDataRaw}`,
-                "Content-Type": "application/json",
-                "ngrok-skip-browser-warning": "69420"
-            }
-        }).then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        }).then(data => {
-            console.log(data); // Use the data from the response
-            
-            const world = data["save_data"]["world"].split('-');
-            setMap(world[0], world[1]);
-
-            window.data.score.amount = data["save_data"]["score"];
-            updateDataElement(window.data.score);
-            
-            window.data.coins.amount = data["save_data"]["coins"];
-            updateDataElement(window.data.coins);
-            
-            window.data.lives.amount = data["save_data"]["lives"];
-            updateDataElement(window.data.lives);
-
-            // window.data.world.amount = data.world;
-            // updateDataElement(window.data.world);
-        }).catch(err => {
-            console.log("ERRORROOR:", err);
-        });
-
     };
 </script>
 </html>
