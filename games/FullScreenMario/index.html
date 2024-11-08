@@ -170,9 +170,11 @@
 
         // connecting datao object tracker after loading mario game
         window.data = new DataObjectTracker(window.data, async (change) => {
-            const objName = change.parent.name.toLowerCase();
-
+            const objName = change.parent?.name?.toLowerCase();
+            
             if (objName == "time") { return; }
+
+            console.log("objName:", objName);
 
             // handle playerpower separately because the name contains in property field
             if (change.property == "playerpower") {
