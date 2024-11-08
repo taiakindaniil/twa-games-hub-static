@@ -45,7 +45,7 @@ body {
     background-color: var(--bg-body);
     /* overflow-x: hidden; */
     user-select: none;
-    overflow: hidden
+    overflow: hidden;
 }
 
 input {
