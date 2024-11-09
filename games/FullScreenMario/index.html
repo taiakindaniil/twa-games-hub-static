@@ -169,7 +169,9 @@
 
         saveData = await getGameProgress(1, lp.initDataRaw);
         FullScreenMario(); // todo: save data
-        loadSaveData(saveData);
+        if (saveData !== null) {
+            loadSaveData(saveData);
+        }
 
         // connecting data object tracker after loading mario game
         window.data = new DataObjectTracker(window.data, async (change) => {
