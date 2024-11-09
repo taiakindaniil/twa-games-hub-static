@@ -359,6 +359,10 @@ document.querySelector('#btn-pause').addEventListener('click', () => {
     pause = true;
 });
 
+document.querySelector('.nav-logo').addEventListener('click', () => {
+    returnStartScreen();
+});
+
 document.querySelector('#btn-resume').addEventListener('click', () => {
     pause_screen.classList.remove('active');
     pause = false;
