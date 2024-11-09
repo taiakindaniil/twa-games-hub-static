@@ -167,11 +167,9 @@
             console.log('You are not in the Telegram app.');
         }
 
-        saveData = await getGameProgress(1, lp.initDataRaw);
+        saveData = await getGameProgress(1, lp.initDataRaw) ?? saveData;
         FullScreenMario(); // todo: save data
-        if (saveData !== null) {
-            loadSaveData(saveData);
-        }
+        loadSaveData(saveData);
 
         // connecting data object tracker after loading mario game
         window.data = new DataObjectTracker(window.data, async (change) => {
