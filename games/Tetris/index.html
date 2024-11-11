@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <!-- Good for vertical, bad for horizontal on mobile -->
+    <meta
+        name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="game" onload="this.contentWindow.focus()" style="width: 100dvw; height: 100vh;" src="../react-tetris/docs/index.html"></iframe>
+
+    <script>
+        window.onload = () => {
+            try {
+                // var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
+                // var lp = retrieveLaunchParams();
+                
+                postEvent('web_app_expand');
+            } catch {
+                console.log('You are not in the Telegram app.');
+            }
+        };
+    </script>
+</body>
+</html>
