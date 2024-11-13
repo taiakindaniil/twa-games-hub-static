@@ -1,6 +1,6 @@
 async function getGameProgress(gameId, tmaInitDataRaw) {
     try {
-        const response = await fetch(`https://a2c5-217-151-231-165.ngrok-free.app/api/game_progress?game_id=${gameId}`, {
+        const response = await fetch(`https://gamestghub.com/api/game_progress?game_id=${gameId}`, {
             method: "GET",
             headers: {
                 "Authorization": `tma ${tmaInitDataRaw}`,
@@ -26,7 +26,7 @@ async function getGameProgress(gameId, tmaInitDataRaw) {
 
 
 async function setGameProgress(gameId, score, saveData, tmaInitDataRaw) {
-    await fetch("https://a2c5-217-151-231-165.ngrok-free.app/api/game_progress", {
+    await fetch("https://gamestghub.com/api/game_progress", {
         method: "POST",
         headers: {
             "Authorization": `tma ${tmaInitDataRaw}`,
