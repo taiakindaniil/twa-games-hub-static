@@ -7,6 +7,7 @@
     <link rel="manifest" href="./manifest.json">
     <style></style>
     <title>Flappy Bird</title>
+    <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script>
     <script src="./playcanvas-stable.min.js"></script>
     <script>
         ASSET_PREFIX = "./";
@@ -44,5 +45,17 @@
     </div>
     <script src="./__start__.js"></script>
     <script src="./__loading__.js"></script>
+    <script>
+        window.onload = () => {
+            try {
+                var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
+                // var lp = retrieveLaunchParams();
+                
+                postEvent('web_app_expand');
+            } catch {
+                console.log('You are not in the Telegram app.');
+            }
+        };
+    </script>
 </body>
 </html>
