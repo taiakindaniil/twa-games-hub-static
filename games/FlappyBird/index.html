@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta charset="utf-8" />
+<meta name="�robots�" content="�noindex�" />
+<link rel="stylesheet" type="text/css" href="./styles.css" />
+<style></style>
+<title>Flappy Bird</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/assets/img/favicon/safari-pinned-tab.svg" color="#70d86c">
+    <meta name="msapplication-TileColor" content="#70d86c">
+    <meta name="theme-color" content="#ffffff">
+    
+    <meta property="og:title" content="Flappy Bird">
+    <meta property="og:description" content="Play the Flappy Bird online! Fly the bird as far as you can without hitting a pipe. How many points can you score?">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Flappy Bird">
+    <meta property="og:width" content="1024">
+    <meta property="og:height" content="1024">
+    <meta property="og:image" content="https://flappybird.gg/assets/img/flappy-bird.png">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Flappy Bird" />
+    <meta name="twitter:description" content="Play the Flappy Bird online! Fly the bird as far as you can without hitting a pipe. How many points can you score?" />
+    <meta name="twitter:image" content="https://flappybird.gg/assets/img/flappy-bird.png">
+</head>
+<body>
+    <div class="wrapper__content">
+        <section class="game" id="game">
+            <div class="game-holder"></div>
+        </section>
+
+        <script src="./playcanvas-stable.min.js"></script>
+        <script>    
+          ASSET_PREFIX = "./";
+          SCRIPT_PREFIX = "./";
+          SCENE_PATH = "404993.json";
+          CONTEXT_OPTIONS = {
+            antialias: true,
+            alpha: false,
+            preserveDrawingBuffer: false,
+            preferWebGl2: true,
+            powerPreference: "default"
+          };
+          SCRIPTS = [
+            37175323, 21399876, 4554207, 4554213, 4554214, 4554217, 4554270,
+            4554271, 4554273, 4554276, 4554279, 20754603, 20755574, 37175329,
+            37186400
+          ];
+          CONFIG_FILENAME =
+            "./config.json";
+          INPUT_SETTINGS = {
+            useKeyboard: true,
+            useMouse: true,
+            useGamepads: false,
+            useTouch: true
+          };
+          pc.script.legacy = false;
+          PRELOAD_MODULES = [];
+        </script>
+
+        <script src="./__start__.js"></script>
+        <script src="./__loading__3f71.js?v=1.1.1"></script>
+</body>
+</html>
