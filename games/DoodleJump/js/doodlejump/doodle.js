@@ -129,41 +129,41 @@ var Doodle;
     },
     gameOver: function(t, e) {
         if ("fearless" != this.name) {
-            // if (this.player.alive = !1, 0 == t) {
-            //     if (self = this, this.death++, this.death % 5 == 0) {
-            //         this.popUPMenu = this.add.sprite(this.game.width / 2, 2880, "popupAtlas", "blank"), this.popUPMenu.anchor.setTo(.5), this.popUPMenu.close = this.add.sprite(353 - this.popUPMenu.width / 2, 378 - this.popUPMenu.height / 2, "popupAtlas", "close"), this.popUPMenu.close.anchor.setTo(.5), this.popUPMenu.close.inputEnabled = !0, this.popUPMenu.close.events.onInputDown.add(function() {
-            //             this.add.tween(this.popUPMenu).to({
-            //                 y: 2880
-            //             }, 1e3).start()
-            //         }, this), this.popUPMenu.addChild(this.popUPMenu.close), this.popUPMenu.playNow = this.add.sprite(160 - this.popUPMenu.width / 2, 385 - this.popUPMenu.height / 2, "popupAtlas", "playNow"), this.popUPMenu.playNow.anchor.setTo(.5), this.popUPMenu.playNow.inputEnabled = !0, this.popUPMenu.playNow.events.onInputUp.add(function() {}, this), this.popUPMenu.addChild(this.popUPMenu.playNow);
-            //         var s = [];
-            //         this.game.device.android ? s = [1] : this.game.device.iOS ? s = [0] : this.game.device.iOS || (s = [0, 1]);
-            //         for (var i = 0, a = 0; a < s.length; a++) {
-            //             switch (s[a]) {
-            //                 case 0:
-            //                     var o = "appstore",
-            //                         h = "https://itunes.apple.com/us/app/doodle-jump-free-be-warned/id456355158?utm_source=web%20game&utm_medium=online&utm_campaign=html5_pilot";
-            //                     break;
-            //                 case 1:
-            //                     o = "googleplay", h = "https://play.google.com/store/apps/details?id=com.lima.doodlejump&utm_source=web%20game&utm_medium=online&utm_campaign=html5_pilot"
-            //             }
-            //             var n = 140 * i - 70 * (s.length - 1);
-            //             i++;
-            //             var l = this.popUPMenu["image" + s[a]];
-            //             (l = this.add.sprite(n, 290 - this.popUPMenu.height / 2, "popupAtlas", o)).anchor.setTo(.5), l.inputEnabled = !0, l.link = h, l.events.onInputUp.add(function(t) {}, this), this.popUPMenu.addChild(l)
-            //         }
-            //         this.add.tween(this.popUPMenu).to({
-            //             y: 1920
-            //         }, 1e3).start()
-            //     }
-            //     this.achievementName && this.achievementName.destroy(), this.achievementHolder && this.achievementHolder.destroy(), this.player.playerTimer.running && (this.stats.stats[4][1] += Math.round(this.player.playerTimer.seconds), this.stats.stats[5][1] < Math.round(this.player.playerTimer.seconds) && (this.stats.stats[5][1] = Math.round(this.player.playerTimer.seconds)), this.stats.stats[6][1] = Math.round(this.player.playerTimer.seconds), 0 == t && (this.stats.stats[23][1] += 1)), this.dontPlaysound || this.sounds.falling.play(), this.scoreMarkPool.x += this.game.width, this.platformPool.forEach(function(t) {
-            //         t.animations.currentAnim && t.kill()
-            //     }, this), this.obstaclePool.forEach(function(t) {
-            //         t.kill()
-            //     }, this), this.bonusPool.forEach(function(t) {
-            //         t.kill()
-            //     }, this), this.game.device.android ? (this.appstore.visible = !1, this.googleplay.y = 725) : this.game.device.iOS && (this.googleplay.visible = !1, this.appstore.y = 725), this.game.world.setBounds(0, 0, 640, 2400), this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, .2, .2), this.gameOverGroup.y = 1440, this.gameOverGroup.visible = !0, this.setHighScore(), this.gameOverStats.text = "your name:" + this.name, this.gameOverStats1.text = "your high score: " + this.localTopScores[0][1], this.gameOverStats2.text = "your score: " + Math.round(this.score)
-            // }
+            if (this.player.alive = !1, 0 == t) {
+                // if (self = this, this.death++, this.death % 5 == 0) {
+                //     this.popUPMenu = this.add.sprite(this.game.width / 2, 2880, "popupAtlas", "blank"), this.popUPMenu.anchor.setTo(.5), this.popUPMenu.close = this.add.sprite(353 - this.popUPMenu.width / 2, 378 - this.popUPMenu.height / 2, "popupAtlas", "close"), this.popUPMenu.close.anchor.setTo(.5), this.popUPMenu.close.inputEnabled = !0, this.popUPMenu.close.events.onInputDown.add(function() {
+                //         this.add.tween(this.popUPMenu).to({
+                //             y: 2880
+                //         }, 1e3).start()
+                //     }, this), this.popUPMenu.addChild(this.popUPMenu.close), this.popUPMenu.playNow = this.add.sprite(160 - this.popUPMenu.width / 2, 385 - this.popUPMenu.height / 2, "popupAtlas", "playNow"), this.popUPMenu.playNow.anchor.setTo(.5), this.popUPMenu.playNow.inputEnabled = !0, this.popUPMenu.playNow.events.onInputUp.add(function() {}, this), this.popUPMenu.addChild(this.popUPMenu.playNow);
+                //     var s = [];
+                //     this.game.device.android ? s = [1] : this.game.device.iOS ? s = [0] : this.game.device.iOS || (s = [0, 1]);
+                //     for (var i = 0, a = 0; a < s.length; a++) {
+                //         switch (s[a]) {
+                //             case 0:
+                //                 var o = "appstore",
+                //                     h = "https://itunes.apple.com/us/app/doodle-jump-free-be-warned/id456355158?utm_source=web%20game&utm_medium=online&utm_campaign=html5_pilot";
+                //                 break;
+                //             case 1:
+                //                 o = "googleplay", h = "https://play.google.com/store/apps/details?id=com.lima.doodlejump&utm_source=web%20game&utm_medium=online&utm_campaign=html5_pilot"
+                //         }
+                //         var n = 140 * i - 70 * (s.length - 1);
+                //         i++;
+                //         var l = this.popUPMenu["image" + s[a]];
+                //         (l = this.add.sprite(n, 290 - this.popUPMenu.height / 2, "popupAtlas", o)).anchor.setTo(.5), l.inputEnabled = !0, l.link = h, l.events.onInputUp.add(function(t) {}, this), this.popUPMenu.addChild(l)
+                //     }
+                //     this.add.tween(this.popUPMenu).to({
+                //         y: 1920
+                //     }, 1e3).start()
+                // }
+                this.achievementName && this.achievementName.destroy(), this.achievementHolder && this.achievementHolder.destroy(), this.player.playerTimer.running && (this.stats.stats[4][1] += Math.round(this.player.playerTimer.seconds), this.stats.stats[5][1] < Math.round(this.player.playerTimer.seconds) && (this.stats.stats[5][1] = Math.round(this.player.playerTimer.seconds)), this.stats.stats[6][1] = Math.round(this.player.playerTimer.seconds), 0 == t && (this.stats.stats[23][1] += 1)), this.dontPlaysound || this.sounds.falling.play(), this.scoreMarkPool.x += this.game.width, this.platformPool.forEach(function(t) {
+                    t.animations.currentAnim && t.kill()
+                }, this), this.obstaclePool.forEach(function(t) {
+                    t.kill()
+                }, this), this.bonusPool.forEach(function(t) {
+                    t.kill()
+                }, this), this.game.device.android ? (this.appstore.visible = !1, this.googleplay.y = 725) : this.game.device.iOS && (this.googleplay.visible = !1, this.appstore.y = 725), this.game.world.setBounds(0, 0, 640, 2400), this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON, .2, .2), this.gameOverGroup.y = 1440, this.gameOverGroup.visible = !0, this.setHighScore(), this.gameOverStats.text = "your name:" + this.name, this.gameOverStats1.text = "your high score: " + this.localTopScores[0][1], this.gameOverStats2.text = "your score: " + Math.round(this.score)
+            }
             2 == t && (this.player.body.velocity.y < 0 && (this.player.body.velocity.y = 0), stars = new Phaser.Sprite(this.game, -40, -60, "atlas", "stars_01"), stars.animations.add("stars", ["atlas", "stars_01", "stars_02", "stars_03"], 24, !0), stars.play("stars"), this.player.addChild(stars), this.game.world.bringToTop(this.player)), 1 == t && (offsetX = 0, offsetY = 0, offsetTime = 0, 6 == e.type && e.animations.currentAnim ? (offsetX = 0, offsetY = -80) : 4 == e.type && (offsetX = 0, offsetY = -25, offsetTime = 400), e.suckYou = !0, this.player.allowGravity = !1, tween = this.game.add.tween(this.player).to({
                 x: e.x + offsetX,
                 y: e.y + this.obstaclePool.y + offsetY
