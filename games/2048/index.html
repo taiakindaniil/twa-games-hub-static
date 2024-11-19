@@ -105,5 +105,19 @@
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
   <script src="js/application.js"></script>
+
+  <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script>
+  <script>
+    window.onload = () => {
+        try {
+            var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
+            // var lp = retrieveLaunchParams();
+            
+            postEvent('web_app_expand');
+        } catch {
+            console.log('You are not in the Telegram app.');
+        }
+    };
+  </script>
 </body>
 </html>
