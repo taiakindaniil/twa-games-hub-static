@@ -82,28 +82,52 @@
         }
 
     </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R5DNTF8WBN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-R5DNTF8WBN');
+    </script>
 </head>
 <body>
-<script>
-    window.NOSW = true;
-    window.GAME_CONFIG = {
-        pokiSdkDebug: false,
-        leaderboard: 'mockup',
-        bundlesPath: './bundles',
-    }
-    // https://github.com/pixijs/pixijs/issues/9414
-    delete Array.prototype.group;
-    window.open = function () {
-    };
-</script>
-<div id="message">
-    <h1>Loading</h1>
-    <h1 class="dot one">.</h1>
-    <h1 class="dot two">.</h1>
-    <h1 class="dot three">.</h1>
-</div>
-<div id="#og-game-holder"></div>
-<script src="js/loading.js"></script>
-<script src="js/boot.js"></script>
+    <script>
+        window.NOSW = true;
+        window.GAME_CONFIG = {
+            pokiSdkDebug: false,
+            leaderboard: 'mockup',
+            bundlesPath: './bundles',
+        }
+        // https://github.com/pixijs/pixijs/issues/9414
+        delete Array.prototype.group;
+        window.open = function () {
+        };
+    </script>
+    <div id="message">
+        <h1>Loading</h1>
+        <h1 class="dot one">.</h1>
+        <h1 class="dot two">.</h1>
+        <h1 class="dot three">.</h1>
+    </div>
+    <div id="#og-game-holder"></div>
+    <script src="js/loading.js"></script>
+    <script src="js/boot.js"></script>
+
+    <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script>
+    <script>
+        window.onload = () => {
+            try {
+                var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
+                // var lp = retrieveLaunchParams();
+                
+                postEvent('web_app_request_fullscreen');
+            } catch {
+                console.log('You are not in the Telegram app.');
+            }
+        };
+    </script>
 </body>
 </html>
