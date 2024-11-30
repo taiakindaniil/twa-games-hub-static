@@ -35,13 +35,14 @@
         window.onload = () => {
             try {
                 var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
-                // var lp = retrieveLaunchParams();
+                var lp = retrieveLaunchParams();
                 
                 postEvent('web_app_expand');
-
+                
                 if (lp.platform == 'android' || lp.platform == 'ios') {
                     postEvent('web_app_request_fullscreen');
                 }
+                
             } catch {
                 console.log('You are not in the Telegram app.');
             }
