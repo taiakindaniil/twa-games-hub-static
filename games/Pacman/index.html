@@ -23,8 +23,19 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <!-- Scripts -->
+  <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script>
+  <script>
+    try {
+      var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
+      var lp = retrieveLaunchParams();
+        
+      postEvent('web_app_expand');
+    } catch {
+        console.log('You are not in the Telegram app.');
+    }
+  </script>
   <script src="js/core-game-site.js" type="640c4de3740860437a3637ac-text/javascript"></script>
-  <script src="js/screenfull.min.js" type="640c4de3740860437a3637ac-text/javascript"></script>
+  <!-- <script src="js/screenfull.min.js" type="640c4de3740860437a3637ac-text/javascript"></script> -->
   <script src="build/app.js" type="640c4de3740860437a3637ac-text/javascript"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R5DNTF8WBN"></script>
@@ -323,20 +334,6 @@
           by playing on an unsupported browser.
         </div>
       </div>
-
-      <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script>
-      <script>
-        window.onload = () => {
-          try {
-            var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
-            var lp = retrieveLaunchParams();
-              
-            postEvent('web_app_expand');
-          } catch {
-              console.log('You are not in the Telegram app.');
-          }
-        };
-      </script>
 
       <script type="640c4de3740860437a3637ac-text/javascript">
         window.onload = () => {
