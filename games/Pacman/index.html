@@ -25,23 +25,18 @@
   <!-- Scripts -->
   <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script>
   <script>
-    window.onload = () => {
-      try {
-        var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
-        var lp = retrieveLaunchParams();
-          
-        postEvent('web_app_expand');
+    try {
+      var { retrieveLaunchParams, postEvent } = window.telegramApps.sdk;
+      var lp = retrieveLaunchParams();
+        
+      postEvent('web_app_expand');
 
-        if (lp.platform == 'android' || lp.platform == 'ios') {
-          postEvent('web_app_request_fullscreen');
-
-          document.querySelector(".header-buttons").style.marginTop = "120px";
-          document.querySelector(".game-ui").style.top = "50px";
-        }
-      } catch {
-        console.log('You are not in the Telegram app.');
+      if (lp.platform == 'android' || lp.platform == 'ios') {
+        postEvent('web_app_request_fullscreen');
       }
-    };
+    } catch {
+      console.log('You are not in the Telegram app.');
+    }
   </script>
   <script src="js/core-game-site.js" type="640c4de3740860437a3637ac-text/javascript"></script>
   <!-- <script src="js/screenfull.min.js" type="640c4de3740860437a3637ac-text/javascript"></script> -->
@@ -347,6 +342,11 @@
       <script type="640c4de3740860437a3637ac-text/javascript">
         window.onload = () => {
           let gameCoordinator = new GameCoordinator();
+
+          if (lp.platform == 'android' || lp.platform == 'ios') {
+            document.querySelector(".header-buttons").style.marginTop = "120px";
+            document.querySelector(".game-ui").style.top = "50px";
+          }
         }
         document.addEventListener('keydown', function(event) {
           if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
