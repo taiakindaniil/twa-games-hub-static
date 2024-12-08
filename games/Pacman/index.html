@@ -33,6 +33,9 @@
 
       if (lp.platform == 'android' || lp.platform == 'ios') {
         postEvent('web_app_request_fullscreen');
+
+        document.querySelector(".header-buttons").style.marginTop = "120px";
+        document.querySelector(".game-ui").style.top = "50px";
       }
     } catch {
         console.log('You are not in the Telegram app.');
